@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container container">
+        <input type="checkbox" name="" id="" />
+        <div class="hamburger-lines">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </div>
+        <ul class="menu-items">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Producs</a></li>
+          <li><a href="#">Checkout</a></li>
+          <li><a href="#HTML/admin.html">Admin</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <h1 class="logo">POS</h1>
+      </div>
+    </nav>
+    <main>
+      <!-- !ADD ITEM-->
+      <form id="itemForm">
+        <label for="itemName">Name:</label>
+        <input type="text" id="itemName" name="itemName" required />
+
+        <label for="itemDescription">Description:</label>
+        <input
+          type="text"
+          id="itemDescription"
+          name="itemDescription"
+          required
+        />
+
+        <label for="itemPrice">Price:</label>
+        <input type="number" id="itemPrice" name="itemPrice" required />
+
+        <label for="itemUrl">Image URL:</label>
+        <input type="text" id="itemUrl" name="itemUrl" required />
+
+        <button type="button" onclick="addItem()">Add Item</button>
+      </form>
+
+      <!-- !EDIT FORM -->
+      <div id="editModal" class="modal" style="display: none">
+        <div class="modal-content">
+          <span
+            class="close"
+            onclick="document.getElementById('editModal').style.display='none'"
+            >&times;</span
+          >
+          <label for="editedName">Name:</label>
+          <input type="text" id="editedName" required />
+
+          <label for="editedDescription">Description:</label>
+          <input type="text" id="editedDescription" required />
+
+          <label for="editedPrice">Price:</label>
+          <input type="number" id="editedPrice" required />
+
+          <label for="editedUrl">Image URL:</label>
+          <input type="text" id="editedUrl" required />
+
+          <button id="saveEdit">Save</button>
+        </div>
+      </div>
+
+      <table id="itemTable"></table>
+    </main>
+    <footer></footer>
+    <script src="/JS/admin.js"></script>
+  </body>
+</html>
