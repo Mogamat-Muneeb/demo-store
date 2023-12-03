@@ -1,4 +1,5 @@
 // ! ITEMS ANY EMPTY ARRAY BY DEFAULT
+
 let items = [];
 // ! STRUCTURE OF ITEMS OBJECT
 function Constructor(id, name, description, price, url) {
