@@ -7,6 +7,8 @@ const tshirtButton = document.querySelector("#tshirtButton");
 const clearButton = document.querySelector("#clearButton");
 const shoesButton = document.querySelector("#shoesButton");
 const topsButton = document.querySelector("#topsButton");
+const purchaseCount = document.getElementById("purchaseCount");
+purchaseCount.textContent = `${purchased.length}`;
 
 const pants = items.filter((item) => item.type.toLowerCase() === "pants");
 const tshirts = items.filter((item) => item.type.toLowerCase() === "tshirt");

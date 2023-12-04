@@ -4,6 +4,9 @@
 //     document.getElementById("pageContent").style.display = "block";
 //   }, 1000);
 // });
+
+const purchaseCount = document.getElementById("purchaseCount");
+
 document.addEventListener("DOMContentLoaded", function () {
   // Check if the loading overlay has been shown before
   if (!sessionStorage.getItem("loadingOverlayShown")) {
@@ -21,3 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("pageContent").style.display = "block";
   }
 });
+
+const purchased = JSON.parse(localStorage.getItem("purchased")) || [];
+console.log("🚀 ~ file: index.js:26 ~ purchased:", purchased.length);
+purchaseCount.textContent = `${purchased.length}`;
