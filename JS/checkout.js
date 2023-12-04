@@ -19,7 +19,6 @@ function renderCheckoutItems() {
   checkoutTable.innerHTML = purchaseItems.join("");
 }
 
-// CALCULATED ITEMS IN CHECKOUT FROM LOCAL STORAGE
 const totalAmount = purchased.reduce(
   (total, item) => total + parseFloat(item.price),
   0
@@ -30,19 +29,13 @@ totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
 renderCheckoutItems();
 
 const paymentBtn = () => {
-  // Clear localStorage
   localStorage.removeItem("purchased");
-  // Update the purchased variable
   purchased = [];
-
   totalAmountE.textContent = "R0.00";
-  // Display an alert
   alert("Payment successful!");
   renderCheckoutItems();
-  // You can add additional logic or redirect the user after payment
 };
 
-// Attach the paymentBtn function to the click event of the Pay Now button
 payNow.addEventListener("click", paymentBtn);
 
 renderCheckoutItems();
