@@ -2,12 +2,13 @@
 
 let items = [];
 // ! STRUCTURE OF ITEMS OBJECT
-function Constructor(id, name, description, price, url) {
+function Constructor(id, name, description, price, url, type) {
   this.id = id;
   this.name = name;
   this.description = description;
   this.price = price;
   this.url = url;
+  this.type = type;
 }
 
 // ! TO ADD ITEMS TO LOCALSTORAGE
@@ -16,13 +17,21 @@ function addItem() {
   const itemDescription = document.getElementById("itemDescription").value;
   const itemPrice = parseFloat(document.getElementById("itemPrice").value);
   const itemUrl = document.getElementById("itemUrl").value;
+  const itemType = document.getElementById("itemType").value;
+
+  if (!itemName || !itemDescription || isNaN(itemPrice) || !itemUrl || !itemType) {
+    alert("Please fill in all fields before adding an item.");
+    return; // Stop execution if any field is empty
+  }
+
 
   const newItem = new Constructor(
     items.length + 1,
     itemName,
     itemDescription,
     itemPrice,
-    itemUrl
+    itemUrl,
+    itemType
   );
   items.push(newItem);
 
@@ -31,6 +40,7 @@ function addItem() {
   document.getElementById("itemDescription").value = "";
   document.getElementById("itemPrice").value = "";
   document.getElementById("itemUrl").value = "";
+  document.getElementById("itemType").value = "";
 
   updateTable();
   saveToLocalStorage();
@@ -47,6 +57,7 @@ function updateTable() {
         <h1>${item.name}</h1>
         <p>R${item.price}</p>
         <p>${item.description}</p>
+        <p>${item.type}</p>
           <div>
             <button onclick="editItem(${index})">Edit</button>
             <button class="delete" value='${index}'>Delete</button>
@@ -117,10 +128,20 @@ function saveToLocalStorage() {
 // ! GET ITEM FROM LOCAL STORAGE
 function loadFromLocalStorage() {
   const storedItems = JSON.parse(localStorage.getItem("items"));
+  // && storedItems.length === 0
   if (storedItems) {
     items = storedItems;
     updateTable();
   }
+  // else {
+  //   // If no items in localStorage, set default items
+  //   items = [
+  //     new Constructor(1, "New Bal", "Item that has a description here", 10.99, "https://i.postimg.cc/Jhgh06Zm/image.png", "Default"),
+  //     new Constructor(2, "RANGE LOOSE TAPERED SALT WASH TROUSERS", "DItem that has a description here", 19.99, "https://i.postimg.cc/sggfcdJs/image.png", "Shoes"),
+  //   ];
+  //   saveToLocalStorage();
+  // }
+  // updateTable();
 }
 
 loadFromLocalStorage();

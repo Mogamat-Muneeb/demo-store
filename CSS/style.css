@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 *,
 *::after,
 *::before {
@@ -44,6 +45,7 @@
   order: 2;
   display: flex;
 }
+
 .logo {
   order: 1;
   font-size: 2.3rem;
@@ -157,25 +159,25 @@
     font-size: 2.5rem;
   }
 
-  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
+  .navbar-container input[type="checkbox"]:checked~.menu-items {
     transform: translateX(0);
   }
 
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
+  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
     transform: rotate(45deg);
   }
 
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
+  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
     transform: scaleY(0);
   }
 
-  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
+  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
     transform: rotate(-45deg);
   }
 }
 
 @media (max-width: 500px) {
-  .navbar-container input[type="checkbox"]:checked ~ .logo {
+  .navbar-container input[type="checkbox"]:checked~.logo {
     display: none;
   }
 }
@@ -247,7 +249,18 @@ main {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+.productSortingDiv {
+  padding-top: 10%;
+}
+
+.checkoutItems{
+  display: flex;
+  gap: 14px;
 }
