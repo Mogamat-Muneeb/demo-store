@@ -1,3 +1,4 @@
+// JavaScript (product.js)
 const purchased = JSON.parse(localStorage.getItem("purchased")) || [];
 const main = document.querySelector("main");
 const items = JSON.parse(localStorage.getItem("items"));
@@ -7,16 +8,13 @@ const clearButton = document.querySelector("#clearButton");
 const shoesButton = document.querySelector("#shoesButton");
 const topsButton = document.querySelector("#topsButton");
 
-// Separate items into pants and t-shirts
 const pants = items.filter((item) => item.type.toLowerCase() === "pants");
 const tshirts = items.filter((item) => item.type.toLowerCase() === "tshirt");
 const shoes = items.filter((item) => item.type.toLowerCase() === "shoes");
 const tops = items.filter((item) => item.type.toLowerCase() === "top");
 
-// Initial rendering
 renderItems(items);
 
-// Function to render items
 function renderItems(itemsToRender) {
   main.innerHTML = itemsToRender
     .map(function (item, index) {
@@ -27,40 +25,72 @@ function renderItems(itemsToRender) {
           <p>${item.description}</p>
           <p>${item.price}</p>
           <p>${item.type}</p>
-          <button value='${index}' data-add>Add To Cart</button>
+          <button value='${index}' data-add class="addToCartBtn">Add To Cart</button>
        </div>
        `;
     })
     .join("");
 }
 
-function add(index) {
-  purchased.push(items[index]);
+function add(itemsArray, index) {
+  purchased.push(itemsArray[index]);
   localStorage.setItem("purchased", JSON.stringify(purchased));
 }
 
 main.addEventListener("click", function (event) {
   if (event.target.hasAttribute("data-add")) {
-    add(event.target.value);
+    const currentItems = getCurrentItems();
+    add(currentItems, event.target.value);
   }
 });
 
-// Event listener for sorting by pants
+function getCurrentItems() {
+  if (pantsButton.classList.contains("active")) {
+    return pants;
+  } else if (tshirtButton.classList.contains("active")) {
+    return tshirts;
+  } else if (shoesButton.classList.contains("active")) {
+    return shoes;
+  } else if (topsButton.classList.contains("active")) {
+    return tops;
+  } else {
+    return items;
+  }
+}
+
 pantsButton.addEventListener("click", function () {
   renderItems(pants);
+  activateButton(pantsButton);
 });
 
-// Event listener for sorting by t-shirts
 tshirtButton.addEventListener("click", function () {
   renderItems(tshirts);
+  activateButton(tshirtButton);
 });
 
 clearButton.addEventListener("click", function () {
   renderItems(items);
+  deactivateAllButtons();
 });
+
 shoesButton.addEventListener("click", function () {
   renderItems(shoes);
+  activateButton(shoesButton);
 });
+
 topsButton.addEventListener("click", function () {
   renderItems(tops);
+  activateButton(topsButton);
 });
+
+function activateButton(button) {
+  deactivateAllButtons();
+  button.classList.add("active");
+}
+
+function deactivateAllButtons() {
+  pantsButton.classList.remove("active");
+  tshirtButton.classList.remove("active");
+  shoesButton.classList.remove("active");
+  topsButton.classList.remove("active");
+}

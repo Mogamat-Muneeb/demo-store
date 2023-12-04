@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="/CSS/style.css" />
-</head>
-
-<body>
-  <nav class="navbar">
-    <div class="navbar-container container">
-      <input type="checkbox" name="" id="" />
-      <div class="hamburger-lines">
-        <span class="line line1"></span>
-        <span class="line line2"></span>
-        <span class="line line3"></span>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container container">
+        <input type="checkbox" name="" id="" />
+        <div class="hamburger-lines">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </div>
+        <ul class="menu-items">
+          <li><a href="/">Home</a></li>
+          <li><a href="/HTML/about.html">About</a></li>
+          <li><a href="/HTML/product.html">Producs</a></li>
+          <li><a href="/HTML/checkout.html">Checkout</a></li>
+          <li><a href="/HTML/admin.html">Admin</a></li>
+          <li><a href="/HTML/contact.html">Contact</a></li>
+        </ul>
+        <h1 class="logo">POS</h1>
       </div>
-      <ul class="menu-items">
-        <li><a href="/">Home</a></li>
-        <li><a href="/HTML/about.html">About</a></li>
-        <li><a href="/HTML/product.html">Producs</a></li>
-        <li><a href="/HTML/checkout.html">Checkout</a></li>
-        <li><a href="/HTML/admin.html">Admin</a></li>
-        <li><a href="/HTML/contact.html">Contact</a></li>
-      </ul>
-      <h1 class="logo">POS</h1>
-    </div>
-  </nav>
-  <main>
-    <div id="checkoutTable"></div>
-    <p>Total Amount : <span id="totalAmount">R0.00</span></p>
-    <button id="payNow">Pay Now</button>
-  </main>
-  <footer></footer>
-  <script src="/JS/checkout.js"></script>
-</body>
-
+    </nav>
+    <main>
+      <div id="checkoutTable"></div>
+      <div class="checkout-total">
+        Total Amount : <span id="totalAmount">R0.00</span>
+        <button id="payNow">Pay Now</button>
+      </div>
+    </main>
+    <footer></footer>
+    <script src="/JS/checkout.js"></script>
+  </body>
 </html>
