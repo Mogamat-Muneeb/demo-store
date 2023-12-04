@@ -19,11 +19,16 @@ function addItem() {
   const itemUrl = document.getElementById("itemUrl").value;
   const itemType = document.getElementById("itemType").value;
 
-  if (!itemName || !itemDescription || isNaN(itemPrice) || !itemUrl || !itemType) {
+  if (
+    !itemName ||
+    !itemDescription ||
+    isNaN(itemPrice) ||
+    !itemUrl ||
+    !itemType
+  ) {
     alert("Please fill in all fields before adding an item.");
     return; // Stop execution if any field is empty
   }
-
 
   const newItem = new Constructor(
     items.length + 1,
@@ -50,9 +55,9 @@ function addItem() {
 function updateTable() {
   let table = document.getElementById("itemTable");
   let products = items.map(function (item, index) {
+    // <span>${item.id}</span>
     return `
     <div class="product-card">
-    <span>${item.id}</span>
      <img src="${item.url}" alt="${item.name}" class="product-image"/>
         <h1>${item.name}</h1>
         <p>R${item.price}</p>
@@ -83,12 +88,14 @@ function editItem(index) {
   const editedDescriptionInput = document.getElementById("editedDescription");
   const editedPriceInput = document.getElementById("editedPrice");
   const editedUrlInput = document.getElementById("editedUrl");
+  const editedType = document.getElementById("editedType");
   const saveButton = document.getElementById("saveEdit");
 
   editedNameInput.value = items[index].name;
   editedDescriptionInput.value = items[index].description;
   editedPriceInput.value = items[index].price;
   editedUrlInput.value = items[index].url;
+  editedType.value = items[index].type;
 
   modal.style.display = "block";
 
@@ -97,12 +104,20 @@ function editItem(index) {
     const editedDescription = editedDescriptionInput.value;
     const editedPrice = parseFloat(editedPriceInput.value);
     const editedUrl = editedUrlInput.value;
+    const editedTypes = editedType.value;
 
-    if (editedName && editedDescription && !isNaN(editedPrice) && editedUrl) {
+    if (
+      editedName &&
+      editedDescription &&
+      !isNaN(editedPrice) &&
+      editedUrl &&
+      editedType
+    ) {
       items[index].name = editedName;
       items[index].description = editedDescription;
       items[index].price = editedPrice;
       items[index].url = editedUrl;
+      items[index].type = editedTypes;
 
       updateTable();
       saveToLocalStorage();

@@ -5,12 +5,13 @@ const pantsButton = document.querySelector("#pantsButton");
 const tshirtButton = document.querySelector("#tshirtButton");
 const clearButton = document.querySelector("#clearButton");
 const shoesButton = document.querySelector("#shoesButton");
+const topsButton = document.querySelector("#topsButton");
 
 // Separate items into pants and t-shirts
-const pants = items.filter((item) => item.type === "pants");
-const tshirts = items.filter((item) => item.type === "tshirt");
-const shoes = items.filter((item) => item.type === "Shoes");
-
+const pants = items.filter((item) => item.type.toLowerCase() === "pants");
+const tshirts = items.filter((item) => item.type.toLowerCase() === "tshirt");
+const shoes = items.filter((item) => item.type.toLowerCase() === "shoes");
+const tops = items.filter((item) => item.type.toLowerCase() === "top");
 
 // Initial rendering
 renderItems(items);
@@ -20,7 +21,8 @@ function renderItems(itemsToRender) {
   main.innerHTML = itemsToRender
     .map(function (item, index) {
       return `
-       <div>
+       <div class="product-card ">
+       <img src="${item.url}" alt="${item.name}" class="product-image"/>
           <h2>${item.name}</h2>
           <p>${item.description}</p>
           <p>${item.price}</p>
@@ -53,10 +55,12 @@ tshirtButton.addEventListener("click", function () {
   renderItems(tshirts);
 });
 
-
 clearButton.addEventListener("click", function () {
   renderItems(items);
 });
 shoesButton.addEventListener("click", function () {
   renderItems(shoes);
+});
+topsButton.addEventListener("click", function () {
+  renderItems(tops);
 });

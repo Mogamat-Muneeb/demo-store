@@ -159,52 +159,79 @@
     font-size: 2.5rem;
   }
 
-  .navbar-container input[type="checkbox"]:checked~.menu-items {
+  .navbar-container input[type="checkbox"]:checked ~ .menu-items {
     transform: translateX(0);
   }
 
-  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
     transform: rotate(45deg);
   }
 
-  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line2 {
     transform: scaleY(0);
   }
 
-  .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+  .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
     transform: rotate(-45deg);
   }
 }
 
 @media (max-width: 500px) {
-  .navbar-container input[type="checkbox"]:checked~.logo {
+  .navbar-container input[type="checkbox"]:checked ~ .logo {
     display: none;
   }
 }
 
 .product-card {
-  width: 350px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   margin-top: 10px;
   border: 1px solid gray;
-  border-radius: 2%;
+  border-radius: 1%;
   padding: 5px;
   justify-content: center;
   align-items: center;
 }
 
 .product-image {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
 }
 
 #itemForm {
   display: flex;
-  flex-direction: column;
-  max-width: 400px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 1220px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   gap: 14px;
+  justify-content: center;
+  align-items: end;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 1220px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 14px;
+  justify-content: center;
+  align-items: end;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 5px;
 }
 
 main {
@@ -214,10 +241,107 @@ main {
 }
 
 #itemTable {
+  max-width: 1220px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 16px;
+  margin-top: 60px;
+}
+
+.addItem {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+#saveEdit {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#pantsButton {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#tshirtButton {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#shoesButton {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#clearButton {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#topsButton {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
 .loading-overlay {
@@ -242,9 +366,6 @@ main {
   animation: moving 2s linear infinite;
 }
 
-
-
-
 @keyframes moving {
   0% {
     transform: rotate(0deg);
@@ -255,12 +376,30 @@ main {
   }
 }
 
-
 .productSortingDiv {
   padding-top: 10%;
+  max-width: 1220px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
-.checkoutItems{
+.checkoutItems {
   display: flex;
   gap: 14px;
+}
+
+.product-collection {
+  max-width: 1220px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
 }
