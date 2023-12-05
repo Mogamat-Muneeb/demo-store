@@ -6,32 +6,115 @@ let purchased = JSON.parse(localStorage.getItem("purchased")) || [];
 purchaseCount.textContent = `${purchased.length}`;
 
 // ! DISPLAYING ITEMS IN CHECKOUT FROM LOCAL STORAGE
+// function renderCheckoutItems() {
+//   let checkoutTable = document.querySelector("#checkoutTable");
+
+//   // ! CHECK IF THE CART IS EMPTY AND HIDE THE "PAY NOW" BUTTON ACCORDINGLY
+//   if (!purchased || purchased.length === 0) {
+//     payNow.style.display = "none";
+//   } else {
+//     payNow.style.display = "flex";
+//   }
+
+//   let purchaseItems = purchased.map(function (item, index) {
+//     return `
+//     <div class="product-card ">
+//       <img src="${item.url}" alt="${item.name}" class="product-image"/>
+//       <h2 class="product-name">${item.name}</h2>
+//       <p  class="product-desc">${item.description}</p>
+//       <p class="product-price">R${item.price}</p>
+//       <button class="removeFromCheckout" onclick="removeFromCheckout(${item.id})" >Remove from Checkout</button>
+//       </div>
+//       `;
+//     // <p class="product-type">${item.type}</p>
+//   });
+
+//   checkoutTable.innerHTML = purchaseItems.join("");
+
+//   // ! ADD EVENT LISTENERS FOR THE REMOVE BUTTONS
+//   document.querySelectorAll(".removeFromCheckout").forEach((btn) => {
+//     btn.addEventListener("click", removeFromCheckout);
+//   });
+// }
+
+// function renderCheckoutItems() {
+//   let checkoutTable = document.querySelector("#checkoutTable");
+
+//   // Check if the cart is empty and hide the "Pay Now" button accordingly
+//   if (!purchased || purchased.length === 0) {
+//     payNow.style.display = "none";
+//   } else {
+//     payNow.style.display = "flex";
+//   }
+
+//   // Create an object to store counts of each unique item
+//   const itemCounts = {};
+
+//   // Populate itemCounts object
+//   purchased.forEach((item) => {
+//     const itemId = item.id;
+//     itemCounts[itemId] = (itemCounts[itemId] || 0) + 1;
+//   });
+
+//   let purchaseItems = purchased.map(function (item, index) {
+//     const itemCount = itemCounts[item.id];
+//     return `
+//       <div class="product-card ">
+//         <img src="${item.url}" alt="${item.name}" class="product-image"/>
+//         <h2 class="product-name">${item.name} (${itemCount})</h2>
+//         <p class="product-desc">${item.description}</p>
+//         <p class="product-price">R${item.price}</p>
+//         <button class="removeFromCheckout" onclick="removeFromCheckout(${item.id})">Remove from Checkout</button>
+//       </div>
+//     `;
+//   });
+
+//   checkoutTable.innerHTML = purchaseItems.join("");
+
+//   // Add event listeners for the remove buttons
+//   document.querySelectorAll(".removeFromCheckout").forEach((btn) => {
+//     btn.addEventListener("click", removeFromCheckout);
+//   });
+// }
+
 function renderCheckoutItems() {
   let checkoutTable = document.querySelector("#checkoutTable");
 
-  // ! CHECK IF THE CART IS EMPTY AND HIDE THE "PAY NOW" BUTTON ACCORDINGLY
+  // Check if the cart is empty and hide the "Pay Now" button accordingly
   if (!purchased || purchased.length === 0) {
     payNow.style.display = "none";
   } else {
     payNow.style.display = "flex";
   }
 
+  // Create a set to store unique item IDs that have been rendered
+  const renderedItems = new Set();
+
   let purchaseItems = purchased.map(function (item, index) {
+    // Skip rendering if the item has already been rendered
+    if (renderedItems.has(item.id)) {
+      return "";
+    }
+
+    // Add the item ID to the set to mark it as rendered
+    renderedItems.add(item.id);
+
+    const itemCount = purchased.filter((i) => i.id === item.id).length;
+
     return `
-    <div class="product-card ">
-      <img src="${item.url}" alt="${item.name}" class="product-image"/>
-      <h2 class="product-name">${item.name}</h2>
-      <p  class="product-desc">${item.description}</p>
-      <p class="product-price">R${item.price}</p>
-      <button class="removeFromCheckout" onclick="removeFromCheckout(${item.id})" >Remove from Checkout</button>
+      <div class="product-card ">
+        <img src="${item.url}" alt="${item.name}" class="product-image"/>
+        <h2 class="product-name">${item.name} (${itemCount})</h2>
+        <p class="product-desc">${item.description}</p>
+        <p class="product-price">R${item.price}</p>
+        <button class="removeFromCheckout" onclick="removeFromCheckout(${item.id})">Remove from Checkout</button>
       </div>
-      `;
-    // <p class="product-type">${item.type}</p>
+    `;
   });
 
   checkoutTable.innerHTML = purchaseItems.join("");
 
-  // ! ADD EVENT LISTENERS FOR THE REMOVE BUTTONS
+  // Add event listeners for the remove buttons
   document.querySelectorAll(".removeFromCheckout").forEach((btn) => {
     btn.addEventListener("click", removeFromCheckout);
   });
@@ -68,12 +151,11 @@ function removeFromCheckout(id) {
   updatePurchaseCount();
 }
 
-
 // ! CALCULATE THE TOTAL PRICE BOTH WAYS WORK (START)
 let totalAmount = 0;
 
 if (purchased) {
-  purchased.forEach(item => {
+  purchased.forEach((item) => {
     totalAmount += parseFloat(item.price);
   });
 }
@@ -87,7 +169,6 @@ totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
 // ?totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
 
 // ! CALCULATE THE TOTAL PRICE BOTH WAYS WORK (END)
-
 
 renderCheckoutItems();
 
