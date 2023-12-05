@@ -1,6 +1,16 @@
 let purchased = JSON.parse(localStorage.getItem("purchased")) || [];
+
+function Constructor(id, name, description, price, url, type) {
+  this.id = id;
+  this.name = name;
+  this.description = description;
+  this.price = price;
+  this.url = url;
+  this.type = type;
+}
+
 const main = document.querySelector("main");
-const items = JSON.parse(localStorage.getItem("items"));
+let items = JSON.parse(localStorage.getItem("items"));
 const pantsButton = document.querySelector("#pantsButton");
 const tshirtButton = document.querySelector("#tshirtButton");
 const clearButton = document.querySelector("#clearButton");
@@ -28,7 +38,6 @@ searchButton.addEventListener("click", handleSearch);
 // ! THE AMOUNT OF ITEMS ABOUT TO BE PURCHASED
 purchaseCount.textContent = `${purchased.length}`;
 
-
 // ! THE FILTERS FOR THE SORT FUCTION
 const pants = items.filter((item) => item.type.toLowerCase() === "pants");
 const tshirts = items.filter((item) => item.type.toLowerCase() === "tshirt");
@@ -40,7 +49,7 @@ renderItems(items);
 // ! RENDERING THE ITEMS ON THE DOM
 
 function renderItems(itemsToRender) {
-  if (itemsToRender.length === 0) {
+  if (itemsToRender?.length === 0) {
     main.innerHTML = "<p>No matching products found.</p>";
   } else {
     main.innerHTML = itemsToRender
@@ -93,8 +102,7 @@ function getCurrentItems() {
   }
 }
 
-
-// ! SORT BUTTONS (START) 
+// ! SORT BUTTONS (START)
 
 pantsButton.addEventListener("click", function () {
   renderItems(pants);
@@ -121,7 +129,6 @@ topsButton.addEventListener("click", function () {
   activateButton(topsButton);
 });
 
-
 function activateButton(button) {
   deactivateAllButtons();
   button.classList.add("active");
@@ -133,4 +140,75 @@ function deactivateAllButtons() {
   shoesButton.classList.remove("active");
   topsButton.classList.remove("active");
 }
-// ! SORT BUTTONS (END) 
+// ! SORT BUTTONS (END)
+
+function saveToLocalStorage() {
+  localStorage.setItem("items", JSON.stringify(items));
+}
+
+// ! GET ITEM FROM LOCAL STORAGE
+function loadFromLocalStorage() {
+  const storedItems = JSON.parse(localStorage.getItem("items"));
+  // && storedItems.length === 0
+  if (storedItems) {
+    items = storedItems;
+    renderItems(items);
+  } else {
+    // ! IF NO ITEMS IN LOCAL STORAGE SET THESE ITEMS
+    items = [
+      new Constructor(
+        1,
+        "New Bal",
+        "Item that has a description here",
+        10.99,
+        "https://i.postimg.cc/Jhgh06Zm/image.png",
+        "Default"
+      ),
+      new Constructor(
+        2,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "DItem that has a description here",
+        19.99,
+        "https://i.postimg.cc/sggfcdJs/image.png",
+        "Shoes"
+      ),
+      new Constructor(
+        3,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/j5nT8NXz/image.png",
+        "top"
+      ),
+      new Constructor(
+        4,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/LXP485wv/image.png",
+        "top"
+      ),
+      new Constructor(
+        5,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/9MDbR5YL/image.png",
+        "Pants"
+      ),
+      new Constructor(
+        6,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/Xvzc016d/image.png",
+        "tshirt"
+      ),
+      // renderItems(items)
+    ];
+    console.log(items);
+    saveToLocalStorage();
+  }
+}
+
+loadFromLocalStorage();
