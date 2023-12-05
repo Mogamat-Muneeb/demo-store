@@ -3,7 +3,6 @@ const payNow = document.getElementById("payNow");
 const purchaseCount = document.getElementById("purchaseCount");
 
 let purchased = JSON.parse(localStorage.getItem("purchased")) || [];
-console.log("🚀 ~ file: index.js:26 ~ purchased:", purchased.length);
 purchaseCount.textContent = `${purchased.length}`;
 
 // ! DISPLAYING ITEMS IN CHECKOUT FROM LOCAL STORAGE
