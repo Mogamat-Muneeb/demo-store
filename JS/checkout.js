@@ -32,7 +32,7 @@ function renderCheckoutItems() {
 
   checkoutTable.innerHTML = purchaseItems.join("");
 
-  // !Add event listeners for the remove buttons
+  // ! ADD EVENT LISTENERS FOR THE REMOVE BUTTONS
   document.querySelectorAll(".removeFromCheckout").forEach((btn) => {
     btn.addEventListener("click", removeFromCheckout);
   });
@@ -48,7 +48,7 @@ function removeFromCheckout(id) {
   if (currentItemID !== -1) {
     purchased.splice(currentItemID, 1);
   }
-  // !Update local storage and re-render checkout
+  // ! UPDATE LOCAL STORAGE AND RE-RENDER CHECKOUT
   localStorage.setItem("purchased", JSON.stringify(purchased));
   renderCheckoutItems();
 
@@ -58,7 +58,7 @@ function removeFromCheckout(id) {
     : 0;
   totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
 
-  // !Hide "Pay Now" button if the cart is empty
+  // ! HIDE "PAY NOW" BUTTON IF THE CART IS EMPTY
   if (!purchased || purchased.length === 0) {
     payNow.style.display = "none";
   }
