@@ -21,13 +21,59 @@
           <li><a href="/HTML/about.html">About</a></li>
           <li><a href="/HTML/product.html">Producs</a></li>
           <li><a href="/HTML/contact.html">Contact</a></li>
-          <li><a href="/HTML/checkout.html">Checkout <span id="purchaseCount">0</span></a></li>
+          <li>
+            <a href="/HTML/checkout.html"
+              >Checkout <span id="purchaseCount">0</span></a
+            >
+          </li>
           <li><a href="/HTML/admin.html">Admin</a></li>
         </ul>
         <h1 class="logo">POS</h1>
       </div>
     </nav>
-    <main class="home-container">dd</main>
+    <main class="home-container">
+      <h1 class="home-heading">Contact Me Now for any queries</h1>
+      <p class="home-paragraph">Im here to help!!</p>
+      <form
+        action="https://formspree.io/f/xqkvrzwy"
+        method="POST"
+        class="form-contact"
+      >
+        <div class="formFields">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="contact-form-inputs"
+          />
+        </div>
+
+        <div class="formFields">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="contact-form-inputs"
+          />
+        </div>
+
+        <div class="formFields">
+          <label for="message">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            required
+            class="contact-form-inputs"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="contact-form-btn">Submit</button>
+      </form>
+    </main>
     <footer></footer>
     <script src="/JS/contact.js"></script>
   </body>
