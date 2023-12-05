@@ -146,7 +146,7 @@ function saveToLocalStorage() {
   localStorage.setItem("items", JSON.stringify(items));
 }
 
-// ! GET ITEM FROM LOCAL STORAGE
+// ! GET ITEM FROM LOCAL STORAGE AND ALSO RUNNING A  CHECK TO SEE IF ITEMS EXIST IN LOCAL STORAGE ALREADY IF NOT THE DISPLAY THE DEFAULT ITEMS SO THAT THE PAGE IS NOT EMPTY AND DISPLAYING NOTHING
 function loadFromLocalStorage() {
   const storedItems = JSON.parse(localStorage.getItem("items"));
   // && storedItems.length === 0
