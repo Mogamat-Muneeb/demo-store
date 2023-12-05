@@ -29,8 +29,8 @@ function renderItems(itemsToRender) {
           <button value='${index}' data-add class="addToCartBtn">Add To Cart</button>
           </div>
           `;
-          // <p class="product-type">${item.type}</p>
-        })
+      // <p class="product-type">${item.type}</p>
+    })
     .join("");
 }
 

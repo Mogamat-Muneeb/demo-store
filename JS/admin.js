@@ -68,7 +68,7 @@ function updateTable() {
         </div>
         </div>
         `;
-        // <p class="product-type">${item.type}</p>
+    // <p class="product-type">${item.type}</p>
   });
 
   table.innerHTML = products.join("");

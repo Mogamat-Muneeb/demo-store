@@ -1,4 +1,3 @@
-
 const totalAmountE = document.getElementById("totalAmount");
 const payNow = document.getElementById("payNow");
 const purchaseCount = document.getElementById("purchaseCount");
@@ -28,7 +27,7 @@ function renderCheckoutItems() {
       <button class="removeFromCheckout" onclick="removeFromCheckout(${item.id})" >Remove from Checkout</button>
       </div>
       `;
-      // <p class="product-type">${item.type}</p>
+    // <p class="product-type">${item.type}</p>
   });
 
   checkoutTable.innerHTML = purchaseItems.join("");
