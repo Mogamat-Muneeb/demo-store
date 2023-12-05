@@ -38,6 +38,10 @@ function renderCheckoutItems() {
   });
 }
 
+function updatePurchaseCount() {
+  purchaseCount.textContent = `${purchased.length}`;
+}
+
 function removeFromCheckout(id) {
   const currentItemID = purchased.findIndex((item) => item.id === id);
 
@@ -58,6 +62,8 @@ function removeFromCheckout(id) {
   if (!purchased || purchased.length === 0) {
     payNow.style.display = "none";
   }
+
+  updatePurchaseCount();
 }
 const totalAmount = purchased
   ? purchased.reduce((total, item) => total + parseFloat(item.price), 0)

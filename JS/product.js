@@ -1,4 +1,4 @@
-const purchased = JSON.parse(localStorage.getItem("purchased")) || [];
+let purchased = JSON.parse(localStorage.getItem("purchased")) || [];
 const main = document.querySelector("main");
 const items = JSON.parse(localStorage.getItem("items"));
 const pantsButton = document.querySelector("#pantsButton");
@@ -54,9 +54,14 @@ function renderItems(itemsToRender) {
   }
 }
 
+function updatePurchaseCount() {
+  purchaseCount.textContent = `${purchased.length}`;
+}
+
 function add(itemsArray, index) {
   purchased.push(itemsArray[index]);
   localStorage.setItem("purchased", JSON.stringify(purchased));
+  updatePurchaseCount();
 }
 
 main.addEventListener("click", function (event) {
