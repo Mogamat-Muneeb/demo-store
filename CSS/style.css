@@ -316,7 +316,7 @@ main {
   border-radius: 2px;
   cursor: pointer;
 }
-.deleteBtn {
+.delete {
   background-color: #000;
   color: white;
   height: 20px;

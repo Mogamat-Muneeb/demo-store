@@ -1,7 +1,6 @@
 // ! ITEMS ANY EMPTY ARRAY BY DEFAULT
 
 let items = [];
-
 // ! STRUCTURE OF ITEMS OBJECT
 function Constructor(id, name, description, price, url, type) {
   this.id = id;
@@ -65,13 +64,12 @@ function updateTable() {
         <p class="product-price">R${item.price}</p>
         <div class="products-info-btns">
         <button class="editBtn" onclick="editItem(${index})">Edit</button>
-        <button  class="deleteBtn"class="delete" value='${index}'>Delete</button>
+        <button   class="delete" value='${index}'>Delete</button>
         </div>
         </div>
         `;
     // <p class="product-type">${item.type}</p>
   });
-  console.log("🚀 ~ file: admin.js:74 ~ products ~ items:", items);
 
   table.innerHTML = products.join("");
 
@@ -132,6 +130,7 @@ function editItem(index) {
 
 // ! REMOVE ITEM FROM LOCAL STORAGE AND DISPLAYING
 function removeItem(position) {
+  console.log("🚀 ~ file: admin.js:133 ~ removeItem ~ position:", position);
   items.splice(position, 1);
   updateTable();
   saveToLocalStorage();
@@ -146,26 +145,26 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
   const storedItems = JSON.parse(localStorage.getItem("items"));
   // && storedItems.length === 0
-  if (storedItems || storedItems.length === 0) {
+  if (storedItems) {
     items = storedItems;
     updateTable();
   } else {
-    // ! IF NO ITEMS IN LOCALSTORAGE, SET DEFAULT ITEMS
+    // If no items in localStorage, set default items
     items = [
       new Constructor(
         1,
         "New Bal",
         "Item that has a description here",
         10.99,
-        "https://i.postimg.cc/0Q80bY3N/image.png",
-        "Shoes"
+        "https://i.postimg.cc/Jhgh06Zm/image.png",
+        "Default"
       ),
       new Constructor(
         2,
         "RANGE LOOSE TAPERED SALT WASH TROUSERS",
-        "loreem ipsumd",
+        "DItem that has a description here",
         19.99,
-        "https://i.postimg.cc/T1W164X1/image.png",
+        "https://i.postimg.cc/sggfcdJs/image.png",
         "Shoes"
       ),
       new Constructor(
