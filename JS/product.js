@@ -39,10 +39,10 @@ searchButton.addEventListener("click", handleSearch);
 purchaseCount.textContent = `${purchased.length}`;
 
 // ! THE FILTERS FOR THE SORT FUCTION
-const pants = items.filter((item) => item.type.toLowerCase() === "pants");
-const tshirts = items.filter((item) => item.type.toLowerCase() === "tshirt");
-const shoes = items.filter((item) => item.type.toLowerCase() === "shoes");
-const tops = items.filter((item) => item.type.toLowerCase() === "top");
+const pants = items?.filter((item) => item.type.toLowerCase() === "pants");
+const tshirts = items?.filter((item) => item.type.toLowerCase() === "tshirt");
+const shoes = items?.filter((item) => item.type.toLowerCase() === "shoes");
+const tops = items?.filter((item) => item.type.toLowerCase() === "top");
 
 renderItems(items);
 
@@ -53,7 +53,7 @@ function renderItems(itemsToRender) {
     main.innerHTML = "<p>No matching products found.</p>";
   } else {
     main.innerHTML = itemsToRender
-      .map(function (item, index) {
+      ?.map(function (item, index) {
         return `
          <div class="product-card ">
          <img src="${item.url}" alt="${item.name}" class="product-image"/>
@@ -203,6 +203,22 @@ function loadFromLocalStorage() {
         19.99,
         "https://i.postimg.cc/Xvzc016d/image.png",
         "tshirt"
+      ),
+      new Constructor(
+        7,
+        "SAMBA DECO SPZL SHOES",
+        "loreem ipsumd",
+        200.99,
+        "https://i.postimg.cc/903mVPFL/image.png",
+        "Shoes"
+      ),
+      new Constructor(
+        7,
+        "Addida shorts",
+        "loreem ipsumd",
+        50.99,
+        "https://i.postimg.cc/JnxxCxqL/image.png",
+        "Pants"
       ),
       // renderItems(items)
     ];

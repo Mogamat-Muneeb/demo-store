@@ -149,7 +149,7 @@ function loadFromLocalStorage() {
     items = storedItems;
     updateTable();
   } else {
-   // ! IF NO ITEMS IN LOCAL STORAGE SET THESE ITEMS
+    // ! IF NO ITEMS IN LOCAL STORAGE SET THESE ITEMS
     items = [
       new Constructor(
         1,
@@ -198,6 +198,22 @@ function loadFromLocalStorage() {
         19.99,
         "https://i.postimg.cc/Xvzc016d/image.png",
         "tshirt"
+      ),
+      new Constructor(
+        7,
+        "SAMBA DECO SPZL SHOES",
+        "loreem ipsumd",
+        200.99,
+        "https://i.postimg.cc/903mVPFL/image.png",
+        "Shoes"
+      ),
+      new Constructor(
+        7,
+        "Addida shorts",
+        "loreem ipsumd",
+        50.99,
+        "https://i.postimg.cc/JnxxCxqL/image.png",
+        "Pants"
       ),
     ];
     saveToLocalStorage();
