@@ -149,7 +149,7 @@ function loadFromLocalStorage() {
     items = storedItems;
     updateTable();
   } else {
-    // If no items in localStorage, set default items
+   // ! IF NO ITEMS IN LOCAL STORAGE SET THESE ITEMS
     items = [
       new Constructor(
         1,

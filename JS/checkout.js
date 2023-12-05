@@ -6,11 +6,11 @@ let purchased = JSON.parse(localStorage.getItem("purchased")) || [];
 console.log("🚀 ~ file: index.js:26 ~ purchased:", purchased.length);
 purchaseCount.textContent = `${purchased.length}`;
 
-// !DISPLAYING ITEMS IN CHECKOUT FROM LOCAL STORAGE
+// ! DISPLAYING ITEMS IN CHECKOUT FROM LOCAL STORAGE
 function renderCheckoutItems() {
   let checkoutTable = document.querySelector("#checkoutTable");
 
-  // Check if the cart is empty and hide the "Pay Now" button accordingly
+  // ! CHECK IF THE CART IS EMPTY AND HIDE THE "PAY NOW" BUTTON ACCORDINGLY
   if (!purchased || purchased.length === 0) {
     payNow.style.display = "none";
   } else {
@@ -38,9 +38,12 @@ function renderCheckoutItems() {
   });
 }
 
+// ! UPDATE PURCHASE AMOUNT IN REALTIME
 function updatePurchaseCount() {
   purchaseCount.textContent = `${purchased.length}`;
 }
+
+// ! REMOVE FROM THE PURCHASE ARRAY
 
 function removeFromCheckout(id) {
   const currentItemID = purchased.findIndex((item) => item.id === id);
@@ -72,6 +75,8 @@ const totalAmount = purchased
 totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
 
 renderCheckoutItems();
+
+// ! IPAYMENT BUTTON
 
 const paymentBtn = () => {
   localStorage.removeItem("purchased");

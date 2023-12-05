@@ -25,13 +25,19 @@ function handleSearch() {
 searchInput.addEventListener("change", handleSearch);
 searchButton.addEventListener("click", handleSearch);
 
+// ! THE AMOUNT OF ITEMS ABOUT TO BE PURCHASED
 purchaseCount.textContent = `${purchased.length}`;
+
+
+// ! THE FILTERS FOR THE SORT FUCTION
 const pants = items.filter((item) => item.type.toLowerCase() === "pants");
 const tshirts = items.filter((item) => item.type.toLowerCase() === "tshirt");
 const shoes = items.filter((item) => item.type.toLowerCase() === "shoes");
 const tops = items.filter((item) => item.type.toLowerCase() === "top");
 
 renderItems(items);
+
+// ! RENDERING THE ITEMS ON THE DOM
 
 function renderItems(itemsToRender) {
   if (itemsToRender.length === 0) {
@@ -48,16 +54,17 @@ function renderItems(itemsToRender) {
             <button value='${index}' data-add class="addToCartBtn">Add To Cart</button>
             </div>
             `;
-        // <p class="product-type">${item.type}</p>
       })
       .join("");
   }
 }
 
+// ! UPDATE THE PURCHASE COUNTER IN REALTIME
 function updatePurchaseCount() {
   purchaseCount.textContent = `${purchased.length}`;
 }
 
+// ! ADDING ITEMS TO THE PURCHASE LOCAL STORAGE
 function add(itemsArray, index) {
   purchased.push(itemsArray[index]);
   localStorage.setItem("purchased", JSON.stringify(purchased));
@@ -71,6 +78,7 @@ main.addEventListener("click", function (event) {
   }
 });
 
+// ! CHECKING THE CURRENT ITEMS TO SET ACTIVE FOR WHICH ITEMS THAT ARE SHOWING WHEN SORTING SO IF ADDED TO   PURCHASE LOCAL STORAGE IT ADDS THE CORRECT ITEM
 function getCurrentItems() {
   if (pantsButton.classList.contains("active")) {
     return pants;
@@ -84,6 +92,9 @@ function getCurrentItems() {
     return items;
   }
 }
+
+
+// ! SORT BUTTONS (START) 
 
 pantsButton.addEventListener("click", function () {
   renderItems(pants);
@@ -110,6 +121,7 @@ topsButton.addEventListener("click", function () {
   activateButton(topsButton);
 });
 
+
 function activateButton(button) {
   deactivateAllButtons();
   button.classList.add("active");
@@ -121,3 +133,4 @@ function deactivateAllButtons() {
   shoesButton.classList.remove("active");
   topsButton.classList.remove("active");
 }
+// ! SORT BUTTONS (END) 
