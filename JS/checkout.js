@@ -67,11 +67,27 @@ function removeFromCheckout(id) {
 
   updatePurchaseCount();
 }
-const totalAmount = purchased
-  ? purchased.reduce((total, item) => total + parseFloat(item.price), 0)
-  : 0;
+
+
+// ! CALCULATE THE TOTAL PRICE BOTH WAYS WORK (START)
+let totalAmount = 0;
+
+if (purchased) {
+  purchased.forEach(item => {
+    totalAmount += parseFloat(item.price);
+  });
+}
 
 totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
+
+// ?const totalAmount = purchased
+//   ? purchased.reduce((total, item) => total + parseFloat(item.price), 0)
+//   : 0;
+
+// ?totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
+
+// ! CALCULATE THE TOTAL PRICE BOTH WAYS WORK (END)
+
 
 renderCheckoutItems();
 
