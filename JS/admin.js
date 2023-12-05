@@ -59,16 +59,16 @@ function updateTable() {
     return `
     <div class="product-card">
      <img src="${item.url}" alt="${item.name}" class="product-image"/>
-        <h1>${item.name}</h1>
-        <p>R${item.price}</p>
-        <p>${item.description}</p>
-        <p>${item.type}</p>
-          <div>
-            <button onclick="editItem(${index})">Edit</button>
-            <button class="delete" value='${index}'>Delete</button>
-          </div>
-      </div>
-    `;
+        <h1 class="product-name">${item.name}</h1>
+        <p  class="product-desc">${item.description}</p>
+        <p class="product-price">R${item.price}</p>
+        <div>
+        <button onclick="editItem(${index})">Edit</button>
+        <button class="delete" value='${index}'>Delete</button>
+        </div>
+        </div>
+        `;
+        // <p class="product-type">${item.type}</p>
   });
 
   table.innerHTML = products.join("");

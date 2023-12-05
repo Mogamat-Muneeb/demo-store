@@ -23,14 +23,14 @@ function renderItems(itemsToRender) {
       return `
        <div class="product-card ">
        <img src="${item.url}" alt="${item.name}" class="product-image"/>
-          <h2>${item.name}</h2>
-          <p>${item.description}</p>
-          <p>${item.price}</p>
-          <p>${item.type}</p>
+          <h2 class="product-name">${item.name}</h2>
+          <p class="product-desc">${item.description}</p>
+          <p class="product-price">R${item.price}</p>
           <button value='${index}' data-add class="addToCartBtn">Add To Cart</button>
-       </div>
-       `;
-    })
+          </div>
+          `;
+          // <p class="product-type">${item.type}</p>
+        })
     .join("");
 }
 
