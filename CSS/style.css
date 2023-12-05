@@ -105,19 +105,20 @@
   .navbar-container .hamburger-lines {
     display: block;
     height: 28px;
-    width: 35px;
+    width: 30px;
     position: absolute;
     top: 20px;
     left: 20px;
     z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    gap: 7px;
   }
 
   .navbar-container .hamburger-lines .line {
     display: block;
-    height: 4px;
+    height: 2px;
     width: 100%;
     border-radius: 10px;
     background: #333;
@@ -302,6 +303,36 @@ main {
   border-radius: 2px;
   cursor: pointer;
 }
+.editBtn {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 13px 20px 13px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.deleteBtn {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 13px 20px 13px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.products-info-btns {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
 
 #pantsButton {
   background-color: #000;
@@ -391,6 +422,18 @@ main {
   border-radius: 2px;
   cursor: pointer;
 }
+#searchBtn {
+  background-color: #000;
+  color: white;
+  height: 20px;
+  border: none;
+  padding: 20px 25px 20px 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+}
 .removeFromCheckout {
   background-color: #000;
   color: white;
@@ -445,6 +488,7 @@ main {
   display: flex;
   justify-content: center;
   gap: 16px;
+  overflow-x: auto;
 }
 
 #checkoutTable {
@@ -501,6 +545,23 @@ main {
   right: 7px;
 }
 
+.search-container {
+  padding-top: 20px;
+  max-width: 1220px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+#searchBar {
+  max-width: 300px;
+  width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 @media only screen and (max-width: 425px) {
   main {
     padding-top: 20%;
@@ -509,5 +570,33 @@ main {
   }
   .productSortingDiv {
     padding-top: 20%;
+    max-width: 1220px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+    overflow-x: auto;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 10px;
+  }
+  .product-card {
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    box-shadow: 6px 9px 43px 0px rgba(216, 216, 216, 0.25);
+    border-radius: 1%;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+  }
+  .product-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
   }
 }

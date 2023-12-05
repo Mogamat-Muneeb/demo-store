@@ -62,9 +62,9 @@ function updateTable() {
         <h1 class="product-name">${item.name}</h1>
         <p  class="product-desc">${item.description}</p>
         <p class="product-price">R${item.price}</p>
-        <div>
-        <button onclick="editItem(${index})">Edit</button>
-        <button class="delete" value='${index}'>Delete</button>
+        <div class="products-info-btns">
+        <button class="editBtn" onclick="editItem(${index})">Edit</button>
+        <button  class="deleteBtn"class="delete" value='${index}'>Delete</button>
         </div>
         </div>
         `;

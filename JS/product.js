@@ -1,4 +1,3 @@
-// JavaScript (product.js)
 const purchased = JSON.parse(localStorage.getItem("purchased")) || [];
 const main = document.querySelector("main");
 const items = JSON.parse(localStorage.getItem("items"));
@@ -8,8 +7,25 @@ const clearButton = document.querySelector("#clearButton");
 const shoesButton = document.querySelector("#shoesButton");
 const topsButton = document.querySelector("#topsButton");
 const purchaseCount = document.getElementById("purchaseCount");
-purchaseCount.textContent = `${purchased.length}`;
+const searchInput = document.querySelector("#searchBar");
+const searchButton = document.querySelector("#searchBtn");
 
+function handleSearch() {
+  const searchValue = searchInput.value.toLowerCase();
+  const currentItems = getCurrentItems();
+  const filteredItems = currentItems.filter(
+    (item) =>
+      item.name.toLowerCase().includes(searchValue) ||
+      item.type.toLowerCase().includes(searchValue)
+  );
+  renderItems(filteredItems);
+}
+
+// ! ATTACH THE FUNCTION TO BOTH ONCHANGE AND ONCLICK EVENTS TO SEARCH
+searchInput.addEventListener("change", handleSearch);
+searchButton.addEventListener("click", handleSearch);
+
+purchaseCount.textContent = `${purchased.length}`;
 const pants = items.filter((item) => item.type.toLowerCase() === "pants");
 const tshirts = items.filter((item) => item.type.toLowerCase() === "tshirt");
 const shoes = items.filter((item) => item.type.toLowerCase() === "shoes");
@@ -18,20 +34,24 @@ const tops = items.filter((item) => item.type.toLowerCase() === "top");
 renderItems(items);
 
 function renderItems(itemsToRender) {
-  main.innerHTML = itemsToRender
-    .map(function (item, index) {
-      return `
-       <div class="product-card ">
-       <img src="${item.url}" alt="${item.name}" class="product-image"/>
-          <h2 class="product-name">${item.name}</h2>
-          <p class="product-desc">${item.description}</p>
-          <p class="product-price">R${item.price}</p>
-          <button value='${index}' data-add class="addToCartBtn">Add To Cart</button>
-          </div>
-          `;
-      // <p class="product-type">${item.type}</p>
-    })
-    .join("");
+  if (itemsToRender.length === 0) {
+    main.innerHTML = "<p>No matching products found.</p>";
+  } else {
+    main.innerHTML = itemsToRender
+      .map(function (item, index) {
+        return `
+         <div class="product-card ">
+         <img src="${item.url}" alt="${item.name}" class="product-image"/>
+            <h2 class="product-name">${item.name}</h2>
+            <p class="product-desc">${item.description}</p>
+            <p class="product-price">R${item.price}</p>
+            <button value='${index}' data-add class="addToCartBtn">Add To Cart</button>
+            </div>
+            `;
+        // <p class="product-type">${item.type}</p>
+      })
+      .join("");
+  }
 }
 
 function add(itemsArray, index) {
