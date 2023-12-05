@@ -71,7 +71,11 @@
 }
 
 .navbar a:hover {
-  color: #117964;
+  color: red;
+}
+
+.currentPage {
+  color: red !important;
 }
 
 @media (max-width: 768px) {
@@ -203,11 +207,9 @@
   cursor: pointer;
 }
 
-
 .product-card:hover {
   transform: scale(1.05);
   transition: all 1.5s ease-in-out;
-
 }
 
 .product-image {
@@ -616,8 +618,6 @@ main {
     align-items: center;
     background-color: white;
   }
-
-
 
   .product-image {
     width: 150px;
