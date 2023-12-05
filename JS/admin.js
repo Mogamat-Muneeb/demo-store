@@ -1,6 +1,7 @@
 // ! ITEMS ANY EMPTY ARRAY BY DEFAULT
 
 let items = [];
+
 // ! STRUCTURE OF ITEMS OBJECT
 function Constructor(id, name, description, price, url, type) {
   this.id = id;
@@ -70,6 +71,7 @@ function updateTable() {
         `;
     // <p class="product-type">${item.type}</p>
   });
+  console.log("🚀 ~ file: admin.js:74 ~ products ~ items:", items);
 
   table.innerHTML = products.join("");
 
@@ -144,19 +146,64 @@ function saveToLocalStorage() {
 function loadFromLocalStorage() {
   const storedItems = JSON.parse(localStorage.getItem("items"));
   // && storedItems.length === 0
-  if (storedItems) {
+  if (storedItems || storedItems.length === 0) {
     items = storedItems;
     updateTable();
+  } else {
+    // ! IF NO ITEMS IN LOCALSTORAGE, SET DEFAULT ITEMS
+    items = [
+      new Constructor(
+        1,
+        "New Bal",
+        "Item that has a description here",
+        10.99,
+        "https://i.postimg.cc/0Q80bY3N/image.png",
+        "Shoes"
+      ),
+      new Constructor(
+        2,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/T1W164X1/image.png",
+        "Shoes"
+      ),
+      new Constructor(
+        3,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/j5nT8NXz/image.png",
+        "top"
+      ),
+      new Constructor(
+        4,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/LXP485wv/image.png",
+        "top"
+      ),
+      new Constructor(
+        5,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/9MDbR5YL/image.png",
+        "Pants"
+      ),
+      new Constructor(
+        6,
+        "RANGE LOOSE TAPERED SALT WASH TROUSERS",
+        "loreem ipsumd",
+        19.99,
+        "https://i.postimg.cc/Xvzc016d/image.png",
+        "tshirt"
+      ),
+    ];
+    saveToLocalStorage();
   }
-  // else {
-  //   // If no items in localStorage, set default items
-  //   items = [
-  //     new Constructor(1, "New Bal", "Item that has a description here", 10.99, "https://i.postimg.cc/Jhgh06Zm/image.png", "Default"),
-  //     new Constructor(2, "RANGE LOOSE TAPERED SALT WASH TROUSERS", "DItem that has a description here", 19.99, "https://i.postimg.cc/sggfcdJs/image.png", "Shoes"),
-  //   ];
-  //   saveToLocalStorage();
-  // }
-  // updateTable();
+  updateTable();
 }
 
 loadFromLocalStorage();
