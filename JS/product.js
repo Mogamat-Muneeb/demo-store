@@ -18,7 +18,8 @@ const topsButton = document.querySelector("#topsButton");
 const purchaseCount = document.getElementById("purchaseCount");
 const searchInput = document.querySelector("#searchBar");
 const searchButton = document.querySelector("#searchBtn");
-loadFromLocalStorage()
+
+loadFromLocalStorage();
 
 function handleSearch() {
   const searchValue = searchInput.value.toLowerCase();
