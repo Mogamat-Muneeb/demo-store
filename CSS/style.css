@@ -660,7 +660,6 @@ main {
   width: 300px;
 }
 
-
 #carousel-container {
   width: 1000px;
   overflow: hidden;
@@ -675,4 +674,10 @@ main {
 .carousel-item {
   width: 300px;
   flex-shrink: 0;
+}
+
+.seeMoreAboutProduct {
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
 }

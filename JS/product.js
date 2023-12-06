@@ -62,6 +62,7 @@ function renderItems(itemsToRender) {
             <p class="product-desc">${item.description}</p>
             <p class="product-price">R${item.price}</p>
             <button value='${index}' data-add class="addToCartBtn">Add To Cart</button>
+            <a href="/HTML/single_product_page.html?id=${item.id}" class="seeMoreAboutProduct">See More</a>
             </div>
             `;
       })
