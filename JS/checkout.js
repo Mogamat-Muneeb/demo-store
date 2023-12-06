@@ -6,7 +6,6 @@ let purchased = JSON.parse(localStorage.getItem("purchased")) || [];
 purchaseCount.textContent = `${purchased.length}`;
 
 // ! DISPLAYING ITEMS IN CHECKOUT FROM LOCAL STORAGE
-
 function renderCheckoutItems() {
   let checkoutTable = document.querySelector("#checkoutTable");
 
