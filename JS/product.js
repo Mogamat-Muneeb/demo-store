@@ -18,6 +18,9 @@ const topsButton = document.querySelector("#topsButton");
 const purchaseCount = document.getElementById("purchaseCount");
 const searchInput = document.querySelector("#searchBar");
 const searchButton = document.querySelector("#searchBtn");
+const productItemsCount = document.querySelector("#productItemsCount");
+
+productItemsCount.textContent = `${items.length} Products`;
 
 loadFromLocalStorage();
 

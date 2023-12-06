@@ -54,6 +54,8 @@ function addItem() {
 // ! DISPLAY ITEMES ADDED
 function updateTable() {
   let table = document.getElementById("itemTable");
+  const productItemsCount = document.querySelector("#productItemsCount");
+  productItemsCount.textContent = `${items.length}`;
   let products = items.map(function (item, index) {
     // <span>${item.id}</span>
     return `
