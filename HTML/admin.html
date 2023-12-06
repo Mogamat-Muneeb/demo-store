@@ -106,9 +106,22 @@
       </div>
 
       <main class="home-container">
-        <h1 class="home-heading">Products (<span id="productItemsCount"></span>)</h1>
-        <p class="home-paragraph">Current products displaying on the POS frontend</p>
+        <h1 class="home-heading">
+          Products (<span id="productItemsCount"></span>)
+        </h1>
+        <p class="home-paragraph">
+          Current products displaying on the POS frontend
+        </p>
       </main>
+      <div class="adminSorting">
+        <select id="sortSelect">
+          <option value="default">Default</option>
+          <option value="nameAsc">Name (A-Z)</option>
+          <option value="nameDesc">Name (Z-A)</option>
+          <option value="priceAsc">Price (Lowest to Highest)</option>
+          <option value="priceDesc">Price (Highest to Lowest)</option>
+        </select>
+      </div>
       <table id="itemTable"></table>
     </main>
     <footer></footer>

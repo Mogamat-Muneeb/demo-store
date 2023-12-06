@@ -11,6 +11,39 @@ function Constructor(id, name, description, price, url, type) {
   this.type = type;
 }
 
+// ! SORTBY FUNCTION (START)
+const sortSelect = document.getElementById("sortSelect"); // Added sorting dropdown
+
+sortSelect.addEventListener("change", function () {
+  const sortOrder = sortSelect.value;
+  sortItems(sortOrder);
+});
+
+function sortItems(order) {
+  switch (order) {
+    case "nameAsc":
+      items.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "nameDesc":
+      items.sort((a, b) => b.name.localeCompare(a.name));
+      break;
+    case "priceAsc":
+      items.sort((a, b) => a.price - b.price);
+      break;
+    case "priceDesc":
+      items.sort((a, b) => b.price - a.price);
+      break;
+    default:
+      // Default sorting (by ID, for example)
+      items.sort((a, b) => a.id - b.id);
+      break;
+  }
+
+  updateTable();
+}
+
+// ! SORTBY FUNCTION (END)
+
 // ! TO ADD ITEMS TO LOCALSTORAGE
 function addItem() {
   const itemName = document.getElementById("itemName").value;
