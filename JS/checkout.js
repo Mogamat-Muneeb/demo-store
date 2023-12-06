@@ -30,6 +30,7 @@ function renderCheckoutItems() {
     renderedItems.add(item.id);
 
     const itemCount = purchased.filter((i) => i.id === item.id).length;
+    // const itemCount = getItemQuantity(item.id);
 
     return `
       <div class="product-card ">
@@ -37,9 +38,17 @@ function renderCheckoutItems() {
         <h2 class="product-name">${item.name} (${itemCount})</h2>
         <p class="product-desc">${item.description}</p>
         <p class="product-price">R${item.price}</p>
-        <button class="removeFromCheckout" onclick="removeFromCheckout(${item.id})">Remove from Checkout</button>
-      </div>
-    `;
+        <button class="removeFromCheckout" onclick="removeFromCheckout(${
+          item.id
+        })">Remove from Checkout</button>
+        </div>
+        `;
+        // <label for="quantity">Quantity:</label>
+        // <select class="quantity-select" onchange="updateTotalCost(${
+        //   item.id
+        // }, this)">
+        //   ${generateQuantityOptions(itemCount)}
+        // </select>
   });
 
   checkoutTable.innerHTML = purchaseItems.join("");
@@ -49,6 +58,50 @@ function renderCheckoutItems() {
     btn.addEventListener("click", removeFromCheckout);
   });
 }
+
+// function getItemQuantity(itemId) {
+//   const itemCount = purchased.filter((item) => item.id === itemId).length;
+//   return itemCount > 0 ? itemCount : 1; // Default to 1 if quantity is not set
+// }
+
+// function getItemQuantity(itemId) {
+//   const item = purchased.find((i) => i.id === itemId).length;
+//   return item ? item.quantity : 1; // Default to 1 if quantity is not set
+// }
+
+// function generateQuantityOptions(selectedQuantity) {
+//   const maxQuantity = 10; // Set your maximum quantity limit
+//   let options = "";
+
+//   for (let i = 1; i <= maxQuantity; i++) {
+//     options += `<option value="${i}" ${
+//       i === selectedQuantity ? "selected" : ""
+//     }>${i}</option>`;
+//   }
+
+//   return options;
+// }
+
+// function updateTotalCost(itemId, selectElement) {
+//   const selectedQuantity = parseInt(selectElement.value, 10);
+
+//   // Update the purchased array with the selected quantity
+//   const itemIndex = purchased.findIndex((item) => item.id === itemId);
+//   if (itemIndex !== -1) {
+//     purchased[itemIndex].quantity = selectedQuantity;
+//   }
+
+//   // Update local storage and re-render checkout
+//   localStorage.setItem("purchased", JSON.stringify(purchased));
+//   renderCheckoutItems();
+
+//   // Update total amount
+//   const totalAmount = purchased.reduce(
+//     (total, item) => total + parseFloat(item.price) * item.quantity,
+//     0
+//   );
+//   totalAmountE.textContent = `R${totalAmount.toFixed(2)}`;
+// }
 
 // ! UPDATE PURCHASE AMOUNT IN REALTIME
 function updatePurchaseCount() {
