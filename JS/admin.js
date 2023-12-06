@@ -65,6 +65,7 @@ function updateTable() {
         <div class="products-info-btns">
         <button class="editBtn" onclick="editItem(${index})">Edit</button>
         <button   class="delete" value='${index}'>Delete</button>
+        <a href="/HTML/single_product_page.html?id=${item.id}" class="seeMoreAboutProduct">See More</a>
         </div>
         </div>
         `;
