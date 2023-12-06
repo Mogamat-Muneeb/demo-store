@@ -19,8 +19,31 @@ const purchaseCount = document.getElementById("purchaseCount");
 const searchInput = document.querySelector("#searchBar");
 const searchButton = document.querySelector("#searchBtn");
 const productItemsCount = document.querySelector("#productItemsCount");
+const sortSelect = document.getElementById("sortSelect");
 
+// ! SORTBY FUNCTION (START)
 
+sortSelect.addEventListener("change", function () {
+  const sortOrder = sortSelect.value;
+  sortItems(sortOrder);
+});
+
+function sortItems(order) {
+  switch (order) {
+    case "priceAsc":
+      items.sort((a, b) => a.price - b.price);
+      break;
+    case "priceDesc":
+      items.sort((a, b) => b.price - a.price);
+      break;
+    default:
+      items.sort((a, b) => b.price - a.price);
+      break;
+  }
+  renderItems(items);
+}
+
+// ! SORTBY FUNCTION (END)
 
 productItemsCount.textContent = `${items.length} Products`;
 

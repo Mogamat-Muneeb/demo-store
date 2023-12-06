@@ -34,7 +34,7 @@ function sortItems(order) {
       items.sort((a, b) => b.price - a.price);
       break;
     default:
-      // Default sorting (by ID, for example)
+
       items.sort((a, b) => a.id - b.id);
       break;
   }
