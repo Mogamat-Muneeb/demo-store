@@ -38,17 +38,16 @@ function renderCheckoutItems() {
         <h2 class="product-name">${item.name} (${itemCount})</h2>
         <p class="product-desc">${item.description}</p>
         <p class="product-price">R${item.price}</p>
-        <button class="removeFromCheckout" onclick="removeFromCheckout(${
-          item.id
-        })">Remove from Checkout</button>
+        <button class="removeFromCheckout" onclick="removeFromCheckout(${item.id})">Remove</button>
+        <a href="/HTML/single_product_page.html?id=${item.id}" class="seeMoreAboutProduct">See More</a>
         </div>
         `;
-        // <label for="quantity">Quantity:</label>
-        // <select class="quantity-select" onchange="updateTotalCost(${
-        //   item.id
-        // }, this)">
-        //   ${generateQuantityOptions(itemCount)}
-        // </select>
+    // <label for="quantity">Quantity:</label>
+    // <select class="quantity-select" onchange="updateTotalCost(${
+    //   item.id
+    // }, this)">
+    //   ${generateQuantityOptions(itemCount)}
+    // </select>
   });
 
   checkoutTable.innerHTML = purchaseItems.join("");

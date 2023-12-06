@@ -27,7 +27,7 @@ function addItem() {
     !itemType
   ) {
     alert("Please fill in all fields before adding an item.");
-    return; // Stop execution if any field is empty
+    return;
   }
 
   const newItem = new Constructor(
