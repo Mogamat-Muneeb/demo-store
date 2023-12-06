@@ -752,6 +752,7 @@ main {
   align-items: start;
   justify-content: start;
   flex-direction: column;
+  gap: 14px;
 }
 
 #product-image {
