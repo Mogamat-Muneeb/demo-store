@@ -1,5 +1,4 @@
 let purchased = JSON.parse(localStorage.getItem("purchased")) || [];
-
 function Constructor(id, name, description, price, url, type) {
   this.id = id;
   this.name = name;
@@ -19,6 +18,7 @@ const topsButton = document.querySelector("#topsButton");
 const purchaseCount = document.getElementById("purchaseCount");
 const searchInput = document.querySelector("#searchBar");
 const searchButton = document.querySelector("#searchBtn");
+loadFromLocalStorage()
 
 function handleSearch() {
   const searchValue = searchInput.value.toLowerCase();
