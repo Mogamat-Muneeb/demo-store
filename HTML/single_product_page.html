@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Single Product</title>
-  <!-- Add any necessary CSS or styling links here -->
-</head>
-<body>
-  <div class="product-details">
-    <h1 id="product-name"></h1>
-    <p id="product-description"></p>
-    <p id="product-price"></p>
-    <!-- Add other details and elements you want to display for a single product -->
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Product</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+        <div class="navbar-container container">
+          <input type="checkbox" name="" id="" />
+          <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+          </div>
+          <ul class="menu-items">
+            <li><a href="/" >Home</a></li>
+            <li><a href="/HTML/about.html">About</a></li>
+            <li><a href="/HTML/product.html">Products</a></li>
+            <li><a href="/HTML/contact.html">Contact</a></li>
+            <li>
+              <a href="/HTML/checkout.html"
+                >Checkout <span id="purchaseCount">0</span></a
+              >
+            </li>
+            <li><a href="/HTML/admin.html">Admin</a></li>
+          </ul>
+          <h1 class="logo">POS</h1>
+        </div>
+      </nav>
+    <div class="main-single-product">
+      <div class="product-image-div">
+        <img src="" alt="" id="product-image" />
+      </div>
+      <div class="product-details">
+        <h1 id="product-name"></h1>
+        <p id="product-description"></p>
+        <p id="product-price"></p>
+      </div>
+    </div>
 
-  <!-- Add any necessary JavaScript files or links here -->
-  <script src="single_product_page.js"></script>
-</body>
+    <script src="single_product_page.js"></script>
+  </body>
 </html>
